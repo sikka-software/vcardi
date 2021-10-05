@@ -78,3 +78,8 @@ END:VCARD
 // SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
 // REV:${lastUpdatedISO}
 console.log(vs);
+
+exports.createVCard = function (s) {
+  console.log("This is a message from the demo package");
+  console.log("args are ", s);
+};
