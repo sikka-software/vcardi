@@ -5,9 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TESTING GITHUB PAGES</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vcardi"></script>
   </head>
   <body>
-    <div>HELLO WORLD</div>
-    <div>Testing github pages</div>
+    <div style="display: flex; flex-direction: row">
+      <form action="submit" id="maker">
+        <label for="prefix">
+          <span>Prefix</span>
+          <input
+            type="text"
+            name="prefix"
+            id="prefix"
+            placeholder="prefix"
+        
+          />
+        </label>
+        <label for="">
+          <span>First Name</span>
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            placeholder="first name"
+            value=""
+          />
+        </label>
+        <label for="">
+          <span>Middle Name</span>
+          <input
+            type="text"
+            name="middle-name"
+            id="middle-name"
+            placeholder="middle name"
+            value=""
+          />
+        </label>
+        <label for="last-name">
+          <span>Last Name</span>
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            placeholder="last name"
+            value=""
+          />
+        </label>
+
+        <label for="suffix">
+          <span>Suffix</span>
+          <input
+            type="text"
+            name="suffix"
+            id="suffix"
+            placeholder="suffix"
+            value=""
+          />
+        </label>
+        <label for="nickname">
+          <span>Nickname</span>
+          <input
+            type="text"
+            name="nickname"
+            id="nickname"
+            placeholder="Nickname"
+            value=""
+          />
+        </label>
+        <label for="birthday">
+          <span>Birthday</span>
+          <input
+            type="date"
+            name="birthday"
+            id="birthday"
+            placeholder="Birthday"
+            value=""
+          />
+        </label>
+
+        <input id="btn" type="submit" value="Create VCard" />
+      </form>
+      <div id="result">vcard string here</div>
+    </div>
+    <script src="/dist/site.js"></script>
   </body>
 </html>
