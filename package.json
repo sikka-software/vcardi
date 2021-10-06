@@ -1,12 +1,11 @@
 {
-  "homepage": "https://sikka-software.github.io/vcardi",
+  "homepage": "http://sikka-software.github.io/vcardi",
   "name": "vcardi",
   "version": "1.0.1",
   "description": "vCard Generator",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [
