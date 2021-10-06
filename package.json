@@ -1,10 +1,13 @@
 {
+  "homepage": "https://sikka-software.github.io/vcardi",
   "name": "vcardi",
   "version": "1.0.1",
   "description": "vCard Generator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "vcard"
@@ -13,5 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "dayjs": "^1.10.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
