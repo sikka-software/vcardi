@@ -1,4 +1,4 @@
-const dayjs = require("dayjs");
+// const dayjs = require("dayjs");
 
 // SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
 // REV:${lastUpdatedISO}
