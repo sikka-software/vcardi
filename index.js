@@ -5,16 +5,10 @@
 // console.log(vs);
 
 exports.createVCard = function (contactObject) {
+  console.log("creating vcard");
   let vc = contactObject;
-
   let vcs = "";
-  //   let vcs =
-  //     "BEGIN:VCARD\r\nVERSION:" + (vc["version"] ? vc["version"] : "3.0\r\n");
-  // vcs += "N:" +
-  //   vc["first_name"] ? (vcs += "FN:" + vc["first_name"] + "\r\n") : null;
-  //   vc["last_name"] ? (vcs += "LN:" + vc["last_name"]) : null;
 
-  // console.log("This is a message from the demo package", vc["first_name"]);
   // let vc =
   //   prefix: "Mr.",
   //   first_name: "Zakher",
@@ -82,54 +76,47 @@ exports.createVCard = function (contactObject) {
   let vcStart = "BEGIN:VCARD";
   let vcEnd = "END:VCARD";
   let vcVersion = "VERSION:" + (vc.version || "3.0");
-  // let vs = `
-
+  // let vs1 = `
+  // BEGIN:VCARD
+  // VERSION:3.0
   // N:${vc.last_name};${vc.first_name};${vc.middle_name};${vc.prefix};${vc.suffix}
-  
-  // ${allAddresses}BDAY:${vc.birthday?.split("-").join("")}
-  // ${allDates}
+  // NICKNAME:${vc.nickname}
+  // ${allAddresses}BDAY:${vc.birthday.split("-").join("")}
+  // FN:${vc.first_name}
+  // LN:${vc.last_name}
+  // TITLE:${vc.job_title}${allDates}
+  // NOTE:${vc.notes}
   // ${allSocials}${allNumbers}${allEmails}ORG:${vc.company};${vc.department}
-
-  // `;
-  const isEmpty = (property) => {
+  // SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
+  // REV:${lastUpdatedISO}
+  // END:VCARD
+  //     `;
+  const isEmpty = (field, property, ending) => {
     if (property) {
-      return property;
+      return field + property + ending;
     } else {
       return "";
     }
   };
+
   let vs =
     vcStart +
     nl +
     vcVersion +
     nl +
-    "N:" +
-    isEmpty(vc.last_name) +
-    ";" +
-    isEmpty(vc.first_name) +
-    ";" +
-    isEmpty(vc.middle_name) +
-    ";" +
-    isEmpty(vc.prefix) +
-    ";" +
-    isEmpty(vc.suffix) +
-    nl +
-    "FN:" +
-    isEmpty(vc.first_name) +
-    nl +
-    "LN:" +
-    isEmpty(vc.last_name) +
-    nl +
-    "TITLE:" +
-    isEmpty(vc.job_title) +
-    nl +
-    "NICKNAME:" +
-    isEmpty(vc.nickname) +
-    nl +
-    "NOTE:" +
-    isEmpty(vc.notes) +
-    nl +
+    isEmpty("N;CHARSET=UTF-8:", vc.last_name, ";") +
+    isEmpty("", vc.first_name, ";") +
+    isEmpty("", vc.middle_name, ";") +
+    isEmpty("", vc.prefix, ";") +
+    isEmpty("", vc.suffix, nl) +
+    isEmpty("FN;CHARSET=UTF-8:", vc.first_name, nl) +
+    isEmpty("LN;CHARSET=UTF-8:", vc.last_name, nl) +
+    isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
+    isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
+    isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
     vcEnd;
 
   return vs;
 };
+
+
