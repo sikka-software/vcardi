@@ -8,35 +8,35 @@ let mycard = stuff.createVCard({
   nickname: "Zak",
   organization: "Sikka",
   department: "Admin",
-  role: "Administration",
+  role: "Chief Executive Officer",
   title: "CEO",
-  notes: "d23d23d9-",
+  notes: "here are the notes",
   numbers: [
     {
-      label: "something",
+      label: "Work",
       number: "050025505050",
     },
     {
-      label: "something",
+      label: "Office",
       number: "050025505050",
     },
     {
-      label: "something",
+      label: "Fax",
       number: "050025505050",
     },
   ],
   emails: [
     {
-      label: "something",
-      email: "050025505050",
+      label: "Work",
+      email: "zmasri@sikka.io",
     },
     {
-      label: "something",
-      email: "050025505050",
+      label: "Office",
+      email: "zakhermasri@gmail.com",
     },
     {
-      label: "something",
-      email: "050025505050",
+      label: "Crypto",
+      email: "masrizakher@gmail.com",
     },
   ],
   socials: [
@@ -46,7 +46,7 @@ let mycard = stuff.createVCard({
     },
     {
       label: "Instagram",
-      link: "https://twitter.com/instagram",
+      link: "https://instagram.com/zaaakher",
     },
   ],
 });

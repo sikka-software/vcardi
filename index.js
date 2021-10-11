@@ -10,11 +10,6 @@ exports.createVCard = function (contactObject) {
   let vcs = "";
 
   // let vc =
-  //   prefix: "Mr.",
-  //   first_name: "Zakher",
-  //   middle_name: "Mahmoud",
-  //   last_name: "Masri",
-  //   suffix: "The First",
   //   birthday: "19930118",
   //   emails: [
   //     { email_label: "XAKHER", email_text: "zmasri@xakher.studio" },
@@ -38,19 +33,19 @@ exports.createVCard = function (contactObject) {
 
   let allEmails = vc.emails
     ?.map((email) => {
-      return `EMAIL;type=${email.email_label},INTERNET:${email.email_text}\r\n`;
+      return `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`;
     })
     .join("");
 
-  let allNumbers = vc.phone_numbers
+  let allNumbers = vc.numbers
     ?.map((phone) => {
-      return `TEL;type=${phone.phone_label}:${phone.phone_text}\r\n`;
+      return `TEL;type=${phone.label}:${phone.number}\r\n`;
     })
     .join("");
 
   let allAddresses = vc.addresses
     ?.map((address) => {
-      return `ADR;CHARSET=UTF-8;type=${address.address_label}:${address.address_text}\r\n`;
+      return `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`;
     })
     .join("");
 
@@ -114,9 +109,9 @@ exports.createVCard = function (contactObject) {
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
+    allEmails +
+    allNumbers +
     vcEnd;
 
   return vs;
 };
-
-
