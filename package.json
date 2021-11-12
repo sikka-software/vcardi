@@ -1,6 +1,6 @@
 {
   "homepage": "https://sikka-software.github.io/vcardi",
-  "name": "vcardi",
+  "name": "@sikka/vcardi",
   "version": "1.1.0",
   "description": "vCard Generator",
   "main": "index.js",
@@ -11,12 +11,19 @@
   "keywords": [
     "vcard"
   ],
-  "author": "Zakher Masri",
+  "author": "Sikka Software",
   "license": "ISC",
   "dependencies": {
     "dayjs": "^1.10.7"
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sikka-software/vcardi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sikka-software/vcardi/issues"
   }
 }
