@@ -30,38 +30,51 @@ exports.createVCard = function (contactObject) {
   //   dates: [],
   // };
   // console.log("downloading vcard", vc);
+  let allEmails;
+  if (vc.emails) {
+    allEmails = vc.emails
+      .map((email) => {
+        return `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`;
+      })
+      .join("");
+  }
 
-  let allEmails = vc.emails
-    ?.map((email) => {
-      return `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`;
-    })
-    .join("");
+  let allNumbers;
+  if (vc.numbers)
+    allNumbers = vc.numbers
+      .map((phone) => {
+        return `TEL;type=${phone.label}:${phone.number}\r\n`;
+      })
+      .join("");
 
-  let allNumbers = vc.numbers
-    ?.map((phone) => {
-      return `TEL;type=${phone.label}:${phone.number}\r\n`;
-    })
-    .join("");
+  let allAddresses;
+  if (vc.addresses) {
+    allAddresses = vc.addresses
+      .map((address) => {
+        return `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`;
+      })
+      .join("");
+  }
 
-  let allAddresses = vc.addresses
-    ?.map((address) => {
-      return `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`;
-    })
-    .join("");
+  let allDates;
+  if (vc.addresses) {
+    allDates = vc.dates
+      .map((date, i) => {
+        return `
+    item${i + 1}.X-ABDATE:${date.date_text}
+    item${i + 1}.X-ABLabel:${date.date_label}`;
+      })
+      .join("");
+  }
 
-  let allDates = vc.dates
-    ?.map((date, i) => {
-      return `
-  item${i + 1}.X-ABDATE:${date.date_text}
-  item${i + 1}.X-ABLabel:${date.date_label}`;
-    })
-    .join("");
-
-  let allSocials = vc.socials
-    ?.map((social, i) => {
-      return `X-SOCIALPROFILE;type=${social.social_label}:${social.social_text}\r\n`;
-    })
-    .join("");
+  let allSocials;
+  if (vc.addresses) {
+    allSocials = vc.socials
+      .map((social, i) => {
+        return `X-SOCIALPROFILE;type=${social.social_label}:${social.social_text}\r\n`;
+      })
+      .join("");
+  }
 
   // let lastUpdated = dayjs(parseInt(onecardObject?.updatedAt))
   //   .format("YYYYMMDD_HHMMss")

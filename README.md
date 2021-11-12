@@ -7,7 +7,6 @@ lightweight javascript library to generate vCards (.vcf)
 npm i vcardi
 ```
 
-
 ## Contribute
 To contribute, clone the repository and edit ```/index.js```
 ```
