@@ -81,7 +81,7 @@ let myContactInfo = {
   addresses: [
     {
       label: "HomeLabel",
-      address_text: "3489 Qsis Bin haa, Dammam ,Saudi Arabia",
+      text: "3489 Qsis Bin haa, Dammam ,Saudi Arabia",
     }
   ],
 }
