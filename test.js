@@ -12,6 +12,17 @@ let mycard = stuff.createVCard({
   role: "Chief Executive Officer",
   title: "CEO",
   notes: "here are the notes",
+  dates: [{
+    label: 'Birthday',
+    text: '19930118'
+  },{
+    label: 'Birthday',
+    text: '19930118'
+  },
+  {
+    label: 'Anniversary',
+    text: '20220101'
+  }],
   numbers: [
     {
       label: "Work",

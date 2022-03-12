@@ -13,6 +13,10 @@
 // TEL;TYPE=WORK,VOICE:966WORKPHONE0623655
 // TEL;TYPE=HOME,FAX:966FAX34289
 // TEL;TYPE=WORK,FAX:966WORKFAX234322
+// BDAY:20191111
+// ANNIVERSARY:20221010
+// LOGO;ENCODING=b;TYPE=PNG:IMAGEDATA..
+// PHOTO;ENCODING=b;TYPE=PNG:IMAGEDATA..
 // LABEL;CHARSET=UTF-8;TYPE=HOME:MyHomeLabel
 // ADR;CHARSET=UTF-8;TYPE=HOME:;;3798;Dammam;Eastern;32333;Saudi Arabia
 // LABEL;CHARSET=UTF-8;TYPE=WORK:MyWorkLabel
@@ -69,22 +73,15 @@ exports.createVCard = function (contactObject) {
       .map((address) => `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`)
       .join("");
   }
-
   if (vc.dates) {
     allDates = vc.dates
-      .map((date, i) => {
-        return `
-    item${i + 1}.X-ABDATE:${date.date_text}
-    item${i + 1}.X-ABLabel:${date.date_label}`;
-      })
+      .map((date, i) => `item${i + 1}.X-ABDATE:${date.label}${nl}item${i + 1}.X-ABLabel:${date.text}${nl}`)
       .join("");
   }
 
   if (vc.socials) {
     allSocials = vc.socials
-      .map((social, i) => {
-        return `X-SOCIALPROFILE;TYPE=${social.label}:${social.link}\r\n`;
-      })
+      .map((social, i) => `X-SOCIALPROFILE;TYPE=${social.label}:${social.link}\r\n`)
       .join("");
   }
 
@@ -92,16 +89,7 @@ exports.createVCard = function (contactObject) {
   //   .format("YYYYMMDD_HHMMss")
   //   .split("_");
   // let lastUpdatedISO = lastUpdated[0] + "T" + lastUpdated[1] + "Z";
-  // let vs1 = `
-  // BEGIN:VCARD
-  // VERSION:3.0
-  // N:${vc.last_name};${vc.first_name};${vc.middle_name};${vc.prefix};${vc.suffix}
-  // NICKNAME:${vc.nickname}
-  // ${allAddresses}BDAY:${vc.birthday.split("-").join("")}
-  // FN:${vc.first_name}
-  // LN:${vc.last_name}
-  // TITLE:${vc.job_title}${allDates}
-  // NOTE:${vc.notes}
+
   // ${allSocials}${allNumbers}${allEmails}ORG:${vc.company};${vc.department}
   // SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
   // REV:${lastUpdatedISO}
@@ -126,10 +114,13 @@ exports.createVCard = function (contactObject) {
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
     isEmpty("ORG;CHARSET=UTF-8:", vc.organization, nl) +
+    isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
+    isEmpty("ROLE;CHARSET=UTF-8:", vc.role, nl) +
     (allEmails ? allEmails : "") +
     (allNumbers ? allNumbers : '') +
     (allSocials ? allSocials : '') +
     (allAddresses ? allAddresses : '') +
+    (allDates ? allDates : '') +
     vcEnd;
 
   return vCardString;
