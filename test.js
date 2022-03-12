@@ -49,10 +49,20 @@ let mycard = stuff.createVCard({
       label: "Instagram",
       link: "https://instagram.com/zaaakher",
     },
+    {
+      label: 'custom',
+      link: 'https://something.com'
+    }
+  ],
+  addresses: [
+    {
+      label: "HomeLabel",
+      address_text: "3489 Qsis Bin haa, Dammam ,Saudi Arabia",
+    }
   ],
 });
 console.log(mycard);
 
-fs.writeFile('contactCard.vcf', mycard, function (err) {
-  if (err) throw err;
-});
+// fs.writeFile('contactCard.vcf', mycard, function (err) {
+//   if (err) throw err;
+// });

@@ -1,3 +1,34 @@
+//Typical VCARD looks like the one below
+
+// BEGIN:VCARD
+// VERSION:3.0
+// FN;CHARSET=UTF-8:Zakher Mahmoud Masri
+// N;CHARSET=UTF-8:Masri;Zakher;Mahmoud;Mr;TheFirst
+// NICKNAME;CHARSET=UTF-8:Zak
+// EMAIL;CHARSET=UTF-8;type=HOME,INTERNET:zmasri@sikka.io
+// EMAIL;CHARSET=UTF-8;type=WORK,INTERNET:support@sikka.io
+// TEL;TYPE=CELL:96CELL0062365
+// TEL;TYPE=PAGER:9665PAGER00623655
+// TEL;TYPE=HOME,VOICE:0138HOME78787
+// TEL;TYPE=WORK,VOICE:966WORKPHONE0623655
+// TEL;TYPE=HOME,FAX:966FAX34289
+// TEL;TYPE=WORK,FAX:966WORKFAX234322
+// LABEL;CHARSET=UTF-8;TYPE=HOME:MyHomeLabel
+// ADR;CHARSET=UTF-8;TYPE=HOME:;;3798;Dammam;Eastern;32333;Saudi Arabia
+// LABEL;CHARSET=UTF-8;TYPE=WORK:MyWorkLabel
+// ADR;CHARSET=UTF-8;TYPE=WORK:;;qsiss;Riyadh;Eastern;32555;Saudi Arabia
+// TITLE;CHARSET=UTF-8:CEOTITLE
+// ROLE;CHARSET=UTF-8:ADMINROLE
+// ORG;CHARSET=UTF-8:SikkaSoftware
+// URL;type=WORK;CHARSET=UTF-8:https://sikka.io
+// X-SOCIALPROFILE;TYPE=twitter:https://twitter.com/zaaakher
+// X-SOCIALPROFILE;TYPE=linkedin:https://linkedin.com/zaaakher
+// X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/zaaakher
+// X-SOCIALPROFILE;TYPE=CustomLINK:https://myCustom.link/here
+// REV:2022-03-12T20:45:15.066Z
+// END:VCARD
+
+
 const isEmpty = (field, property, ending) => {
   if (property) {
     return field + property + ending;
@@ -39,7 +70,7 @@ exports.createVCard = function (contactObject) {
       .join("");
   }
 
-  if (vc.addresses) {
+  if (vc.dates) {
     allDates = vc.dates
       .map((date, i) => {
         return `
@@ -49,10 +80,10 @@ exports.createVCard = function (contactObject) {
       .join("");
   }
 
-  if (vc.addresses) {
+  if (vc.socials) {
     allSocials = vc.socials
       .map((social, i) => {
-        return `X-SOCIALPROFILE;type=${social.social_label}:${social.social_text}\r\n`;
+        return `X-SOCIALPROFILE;TYPE=${social.label}:${social.link}\r\n`;
       })
       .join("");
   }
@@ -77,7 +108,8 @@ exports.createVCard = function (contactObject) {
   // END:VCARD
   //     `;
 
-
+  //add source link
+  //fix addres to separate with ;
   let vCardString =
     vcStart +
     nl +
@@ -93,8 +125,11 @@ exports.createVCard = function (contactObject) {
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
+    isEmpty("ORG;CHARSET=UTF-8:", vc.organization, nl) +
     (allEmails ? allEmails : "") +
     (allNumbers ? allNumbers : '') +
+    (allSocials ? allSocials : '') +
+    (allAddresses ? allAddresses : '') +
     vcEnd;
 
   return vCardString;
