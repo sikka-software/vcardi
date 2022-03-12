@@ -1,4 +1,5 @@
 const stuff = require("./index.js");
+const fs = require('fs');
 let mycard = stuff.createVCard({
   prefix: "Mr.",
   first_name: "Zakher",
@@ -51,3 +52,7 @@ let mycard = stuff.createVCard({
   ],
 });
 console.log(mycard);
+
+fs.writeFile('contactCard.vcf', mycard, function (err) {
+  if (err) throw err;
+});

@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+N;CHARSET=UTF-8:Masri;Zakher;Mahmoud;Mr.;The First
+FN;CHARSET=UTF-8:Zakher
+LN;CHARSET=UTF-8:Masri
+TITLE;CHARSET=UTF-8:CEO
+NICKNAME;CHARSET=UTF-8:Zak
+NOTE;CHARSET=UTF-8:here are the notes
+EMAIL;type=Work,INTERNET:zmasri@sikka.io
+EMAIL;type=Office,INTERNET:zakhermasri@gmail.com
+EMAIL;type=Crypto,INTERNET:masrizakher@gmail.com
+TEL;type=Work:050025505050
+TEL;type=Office:050025505050
+TEL;type=Fax:050025505050
+END:VCARD

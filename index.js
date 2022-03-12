@@ -1,62 +1,44 @@
-// const dayjs = require("dayjs");
-
-// SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
-// REV:${lastUpdatedISO}
-// console.log(vs);
+const isEmpty = (field, property, ending) => {
+  if (property) {
+    return field + property + ending;
+  } else {
+    return "";
+  }
+};
 
 exports.createVCard = function (contactObject) {
-  console.log("creating vcard");
-  let vc = contactObject;
-  let vcs = "";
+  console.log("creating vCard");
 
-  // let vc =
-  //   birthday: "19930118",
-  //   emails: [
-  //     { email_label: "XAKHER", email_text: "zmasri@xakher.studio" },
-  //     { email_label: "SIKKA", email_text: "zmasri@sikkaio" },
-  //   ],
-  //   phone_numbers: [
-  //     { phone_label: "Personal", phone_text: "0505050505" },
-  //     { phone_label: "Work", phone_text: "0506060606" },
-  //   ],
-  //   addresses: [
-  //     { address_label: "Home", address_text: "3708 Fan bin fan, Saudi Arabia" },
-  //     {
-  //       address_label: "Office",
-  //       address_text: "قيس بن بحر, الرياض, المملكة العربية السعودية",
-  //     },
-  //   ],
-  //   socials: [],
-  //   dates: [],
-  // };
-  // console.log("downloading vcard", vc);
+  let vc = contactObject;
+
+  const nl = "\r\n"; //Line break 
+  let vcStart = "BEGIN:VCARD"; //Start of vCard
+  let vcEnd = "END:VCARD"; //End of vCard
+  let vcVersion = "VERSION:" + (vc.version || "3.0");  //vCard version
+
   let allEmails;
+  let allNumbers;
+  let allAddresses;
+  let allDates;
+  let allSocials;
+
   if (vc.emails) {
     allEmails = vc.emails
-      .map((email) => {
-        return `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`;
-      })
+      .map((email) => `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`)
       .join("");
   }
 
-  let allNumbers;
-  if (vc.numbers)
+  if (vc.numbers) {
     allNumbers = vc.numbers
-      .map((phone) => {
-        return `TEL;type=${phone.label}:${phone.number}\r\n`;
-      })
+      .map((phone) => `TEL;type=${phone.label}:${phone.number}\r\n`)
       .join("");
-
-  let allAddresses;
+  }
   if (vc.addresses) {
     allAddresses = vc.addresses
-      .map((address) => {
-        return `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`;
-      })
+      .map((address) => `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`)
       .join("");
   }
 
-  let allDates;
   if (vc.addresses) {
     allDates = vc.dates
       .map((date, i) => {
@@ -67,7 +49,6 @@ exports.createVCard = function (contactObject) {
       .join("");
   }
 
-  let allSocials;
   if (vc.addresses) {
     allSocials = vc.socials
       .map((social, i) => {
@@ -80,10 +61,6 @@ exports.createVCard = function (contactObject) {
   //   .format("YYYYMMDD_HHMMss")
   //   .split("_");
   // let lastUpdatedISO = lastUpdated[0] + "T" + lastUpdated[1] + "Z";
-  const nl = "\r\n";
-  let vcStart = "BEGIN:VCARD";
-  let vcEnd = "END:VCARD";
-  let vcVersion = "VERSION:" + (vc.version || "3.0");
   // let vs1 = `
   // BEGIN:VCARD
   // VERSION:3.0
@@ -99,15 +76,9 @@ exports.createVCard = function (contactObject) {
   // REV:${lastUpdatedISO}
   // END:VCARD
   //     `;
-  const isEmpty = (field, property, ending) => {
-    if (property) {
-      return field + property + ending;
-    } else {
-      return "";
-    }
-  };
 
-  let vs =
+
+  let vCardString =
     vcStart +
     nl +
     vcVersion +
@@ -126,5 +97,5 @@ exports.createVCard = function (contactObject) {
     allNumbers +
     vcEnd;
 
-  return vs;
+  return vCardString;
 };
