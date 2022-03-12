@@ -93,8 +93,8 @@ exports.createVCard = function (contactObject) {
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
-    allEmails +
-    allNumbers +
+    (allEmails ? allEmails : "") +
+    (allNumbers ? allNumbers : '') +
     vcEnd;
 
   return vCardString;
