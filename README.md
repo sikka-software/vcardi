@@ -18,25 +18,36 @@ let myContactInfo = {
   first_name: "Zakher",
   middle_name: "Mahmoud",
   last_name: "Masri",
-  suffix: "",
+  suffix: "The First",
   nickname: "Zak",
-  organization: "Sikka Software",
+  organization: "Sikka",
   department: "Admin",
   role: "Chief Executive Officer",
   title: "CEO",
   notes: "here are the notes",
+  dates: [{
+    label: 'Birthday',
+    text: '19930118'
+  },{
+    label: 'Birthday',
+    text: '19930118'
+  },
+  {
+    label: 'Anniversary',
+    text: '20220101'
+  }],
   numbers: [
     {
       label: "Work",
-      number: "0512345678",
+      number: "050025505050",
     },
     {
       label: "Office",
-      number: "0512345678",
+      number: "050025505050",
     },
     {
       label: "Fax",
-      number: "0512345678",
+      number: "050025505050",
     },
   ],
   emails: [
@@ -45,12 +56,12 @@ let myContactInfo = {
       email: "zmasri@sikka.io",
     },
     {
-      label: "Support",
-      email: "support@sikka.io",
+      label: "Office",
+      email: "zakhermasri@gmail.com",
     },
     {
-      label: "Jobs",
-      email: "jobs@sikka.io",
+      label: "Crypto",
+      email: "masrizakher@gmail.com",
     },
   ],
   socials: [
@@ -62,6 +73,16 @@ let myContactInfo = {
       label: "Instagram",
       link: "https://instagram.com/zaaakher",
     },
+    {
+      label: 'custom',
+      link: 'https://something.com'
+    }
+  ],
+  addresses: [
+    {
+      label: "HomeLabel",
+      address_text: "3489 Qsis Bin haa, Dammam ,Saudi Arabia",
+    }
   ],
 }
 
