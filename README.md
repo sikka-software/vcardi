@@ -39,43 +39,43 @@ let myContactInfo = {
   numbers: [
     {
       label: "Work",
-      number: "050025505050",
+      text: "050025505050",
     },
     {
       label: "Office",
-      number: "050025505050",
+      text: "050025505050",
     },
     {
       label: "Fax",
-      number: "050025505050",
+      text: "050025505050",
     },
   ],
   emails: [
     {
       label: "Work",
-      email: "zmasri@sikka.io",
+      text: "zmasri@sikka.io",
     },
     {
       label: "Office",
-      email: "zakhermasri@gmail.com",
+      text: "zakhermasri@gmail.com",
     },
     {
       label: "Crypto",
-      email: "masrizakher@gmail.com",
+      text: "masrizakher@gmail.com",
     },
   ],
   socials: [
     {
       label: "Twitter",
-      link: "https://twitter.com/zaaakher",
+      text: "https://twitter.com/zaaakher",
     },
     {
       label: "Instagram",
-      link: "https://instagram.com/zaaakher",
+      text: "https://instagram.com/zaaakher",
     },
     {
       label: 'custom',
-      link: 'https://something.com'
+      text: 'https://something.com'
     }
   ],
   addresses: [
