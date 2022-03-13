@@ -2,6 +2,12 @@
 lightweight javascript library to generate vCards (.vcf)
 
 
+# Upcoming updates
+- [ ] Add Logo imagedata
+- [ ] Add Photo imagedata
+- [ ] Add department
+
+
 ## Getting Started
 ```
 npm i vcardi
