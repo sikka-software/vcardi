@@ -59,18 +59,18 @@ exports.createVCard = function (contactObject) {
 
   if (vc.emails) {
     allEmails = vc.emails
-      .map((email) => `EMAIL;type=${email.label},INTERNET:${email.email}\r\n`)
+      .map((email) => `EMAIL;type=${email.label},INTERNET:${email.text}\r\n`)
       .join("");
   }
 
   if (vc.numbers) {
     allNumbers = vc.numbers
-      .map((phone) => `TEL;type=${phone.label}:${phone.number}\r\n`)
+      .map((phone) => `TEL;type=${phone.label}:${phone.text}\r\n`)
       .join("");
   }
   if (vc.addresses) {
     allAddresses = vc.addresses
-      .map((address) => `ADR;CHARSET=UTF-8;type=${address.label}:${address.address_text}\r\n`)
+      .map((address) => `ADR;CHARSET=UTF-8;type=${address.label}:${address.text}\r\n`)
       .join("");
   }
   if (vc.dates) {
@@ -81,7 +81,7 @@ exports.createVCard = function (contactObject) {
 
   if (vc.socials) {
     allSocials = vc.socials
-      .map((social, i) => `X-SOCIALPROFILE;TYPE=${social.label}:${social.link}\r\n`)
+      .map((social, i) => `X-SOCIALPROFILE;TYPE=${social.label}:${social.text}\r\n`)
       .join("");
   }
 
@@ -114,7 +114,6 @@ exports.createVCard = function (contactObject) {
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
     isEmpty("ORG;CHARSET=UTF-8:", vc.organization, nl) +
-    isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("ROLE;CHARSET=UTF-8:", vc.role, nl) +
     (allEmails ? allEmails : "") +
     (allNumbers ? allNumbers : '') +
