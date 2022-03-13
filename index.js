@@ -96,8 +96,9 @@ exports.createVCard = function (contactObject) {
   // END:VCARD
   //     `;
 
-  //add source link
+  //https://en.wikipedia.org/wiki/VCard
   //fix addres to separate with ;
+  //update FN to formatted name: i.e. Mr. Zakher Mahmoud Masri
   let vCardString =
     vcStart +
     nl +
@@ -120,6 +121,8 @@ exports.createVCard = function (contactObject) {
     (allSocials ? allSocials : '') +
     (allAddresses ? allAddresses : '') +
     (allDates ? allDates : '') +
+    isEmpty('REV:', vc.last_updated, nl) +
+    isEmpty('SOURCE:', vc.source, nl) +
     vcEnd;
 
   return vCardString;

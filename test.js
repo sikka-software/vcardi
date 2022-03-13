@@ -1,6 +1,8 @@
 const stuff = require("./index.js");
 const fs = require('fs');
 let mycard = stuff.createVCard({
+  last_updated: new Date().toISOString(),
+  source: 'https://link.onecard.zone/myCard.vcf',
   prefix: "Mr.",
   first_name: "Zakher",
   middle_name: "Mahmoud",
