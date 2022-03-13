@@ -1,3 +1,9 @@
+//TODO:
+//fix addres to separate with ;
+//add department
+//update FN to formatted name: i.e. Mr. Zakher Mahmoud Masri
+
+//https://en.wikipedia.org/wiki/VCard
 //Typical VCARD looks like the one below
 
 // BEGIN:VCARD
@@ -41,28 +47,24 @@ const isEmpty = (field, property, ending) => {
   }
 };
 
-exports.createVCard = function (contactObject) {
-  console.log("creating vCard");
-
-  let vc = contactObject;
+exports.createVCard = function (vc) {
 
   const nl = "\r\n"; //Line break 
   let vcStart = "BEGIN:VCARD"; //Start of vCard
   let vcEnd = "END:VCARD"; //End of vCard
   let vcVersion = "VERSION:" + (vc.version || "3.0");  //vCard version
 
-  let allEmails;
-  let allNumbers;
-  let allAddresses;
-  let allDates;
-  let allSocials;
+  let allEmails; //Array of emails
+  let allNumbers; //Array of numbers (phone, mobile, fax)
+  let allAddresses; //Array of addresses
+  let allDates; //Array of dates
+  let allSocials; //Array of social links
 
   if (vc.emails) {
     allEmails = vc.emails
       .map((email) => `EMAIL;type=${email.label},INTERNET:${email.text}\r\n`)
       .join("");
   }
-
   if (vc.numbers) {
     allNumbers = vc.numbers
       .map((phone) => `TEL;type=${phone.label}:${phone.text}\r\n`)
@@ -78,27 +80,12 @@ exports.createVCard = function (contactObject) {
       .map((date, i) => `item${i + 1}.X-ABDATE:${date.label}${nl}item${i + 1}.X-ABLabel:${date.text}${nl}`)
       .join("");
   }
-
   if (vc.socials) {
     allSocials = vc.socials
       .map((social, i) => `X-SOCIALPROFILE;TYPE=${social.label}:${social.text}\r\n`)
       .join("");
   }
 
-  // let lastUpdated = dayjs(parseInt(onecardObject?.updatedAt))
-  //   .format("YYYYMMDD_HHMMss")
-  //   .split("_");
-  // let lastUpdatedISO = lastUpdated[0] + "T" + lastUpdated[1] + "Z";
-
-  // ${allSocials}${allNumbers}${allEmails}ORG:${vc.company};${vc.department}
-  // SOURCE:https://link.onecard.zone/${onecardObject?.onecard_shortid}
-  // REV:${lastUpdatedISO}
-  // END:VCARD
-  //     `;
-
-  //https://en.wikipedia.org/wiki/VCard
-  //fix addres to separate with ;
-  //update FN to formatted name: i.e. Mr. Zakher Mahmoud Masri
   let vCardString =
     vcStart +
     nl +
