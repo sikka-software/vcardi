@@ -1,7 +1,7 @@
 {
   "homepage": "https://sikka-software.github.io/vcardi",
   "name": "@sikka/vcardi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "vCard Generator",
   "main": "index.js",
   "scripts": {

@@ -96,7 +96,9 @@ exports.createVCard = function (vc) {
     isEmpty("", vc.middle_name, ";") +
     isEmpty("", vc.prefix, ";") +
     isEmpty("", vc.suffix, nl) +
-    isEmpty("FN;CHARSET=UTF-8:", vc.first_name, nl) +
+    isEmpty("FN;CHARSET=UTF-8:", vc.first_name, "") +
+    isEmpty(" ", vc.middle_name, "") +
+    isEmpty(" ", vc.last_name, nl) +
     isEmpty("LN;CHARSET=UTF-8:", vc.last_name, nl) +
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
