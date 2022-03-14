@@ -1,6 +1,9 @@
 # vcardi
 lightweight javascript library to generate vCards (.vcf)
 
+[![NPM](https://img.shields.io/npm/v/@sikka/vcardi.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@sikka/vcardi)
+[![NPM](https://img.shields.io/npm/dt/@sikka/vcardi.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@sikka/vcardi)
+
 
 # Upcoming updates
 - [ ] Add Logo imagedata
