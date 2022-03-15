@@ -1,4 +1,8 @@
-# vcardi
+<p align="center">
+  <img src="https://xakher-images.s3.ap-southeast-1.amazonaws.com/vcardi-logo.jpg" alt="Hawa | هواء" />
+</p>
+
+# vCardi
 lightweight javascript library to generate vCards (.vcf)
 
 [![NPM](https://img.shields.io/npm/v/@sikka/vcardi.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@sikka/vcardi)
