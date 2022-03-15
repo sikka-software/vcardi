@@ -12,7 +12,7 @@ let mycard = stuff.createVCard({
   organization: "Sikka",
   department: "Admin",
   role: "Chief Executive Officer",
-  title: "CEO",
+  title: "",
   notes: "here are the notes",
   dates: [{
     label: 'Birthday',
