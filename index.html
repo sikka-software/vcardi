@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>vCardi Testing</title>
     <link rel="stylesheet" href="style.css" />
-    <script>
-      var exports = {};
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@sikka/vcardi@1.1.0/index.min.js"></script>
     <!-- <script src="https://unpkg.com/@sikka/vcardi@1.1.1"></script> -->
   </head>
   <body>
@@ -70,6 +66,36 @@
             value=""
           />
         </label>
+        <label for="organization">
+          <span>Organization</span>
+          <input
+            type="text"
+            name="organization"
+            id="organization"
+            placeholder="Organization"
+            value=""
+          />
+        </label>
+        <label for="role">
+          <span>Role</span>
+          <input
+            type="text"
+            name="role"
+            id="role"
+            placeholder="Role"
+            value=""
+          />
+        </label>
+        <label for="title">
+          <span>Title</span>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Title"
+            value=""
+          />
+        </label>
         <label for="birthday">
           <span>Birthday</span>
           <input
@@ -80,28 +106,22 @@
             value=""
           />
         </label>
+        <label for="notes">
+          <span>Notes</span>
+          <input
+            type="text"
+            name="notes"
+            id="notes"
+            placeholder="Notes"
+            value=""
+          />
+        </label>
 
         <input id="btn" type="submit" value="Create VCard" />
       </form>
-      <div id="result">THIS PAGE IS STILL IN PROGRESS</div>
+      <div id="result">vCard string will appear here</div>
     </div>
-
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        requirejs(
-          ["https://cdn.jsdelivr.net/npm/@sikka/vcardi@1.1.0/index.min.js"],
-          function (lodash) {
-            const headerEl = document.getElementById("header");
-            console.log(lodash);
-            // headerEl.textContent = lodash.upperCase("hello world");
-          }
-        );
-      });
-    </script> -->
-    <!-- <script>
-      console.log(createVCard);
-    </script> -->
-
-    <script src="/site.js"></script>
   </body>
+
+  <script type="module" src="./site.js"></script>
 </html>

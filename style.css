@@ -43,5 +43,10 @@ label input {
 
 #result {
   /* background-color: blue; */
+  white-space: pre-wrap;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: white;
+  border-radius: 10px;
   width: 100%;
 }
