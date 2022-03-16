@@ -38,7 +38,6 @@
 // REV:2022-03-12T20:45:15.066Z
 // END:VCARD
 
-
 const isEmpty = (field, property, ending) => {
   if (property) {
     return field + property + ending;
@@ -48,11 +47,10 @@ const isEmpty = (field, property, ending) => {
 };
 
 exports.createVCard = function (vc) {
-
-  const nl = "\r\n"; //Line break 
+  const nl = "\r\n"; //Line break
   let vcStart = "BEGIN:VCARD"; //Start of vCard
   let vcEnd = "END:VCARD"; //End of vCard
-  let vcVersion = "VERSION:" + (vc.version || "3.0");  //vCard version
+  let vcVersion = "VERSION:" + (vc.version || "3.0"); //vCard version
 
   let allEmails; //Array of emails
   let allNumbers; //Array of numbers (phone, mobile, fax)
@@ -72,17 +70,28 @@ exports.createVCard = function (vc) {
   }
   if (vc.addresses) {
     allAddresses = vc.addresses
-      .map((address) => `ADR;CHARSET=UTF-8;type=${address.label}:${address.text}\r\n`)
+      .map(
+        (address) =>
+          `ADR;CHARSET=UTF-8;type=${address.label}:${address.text}\r\n`
+      )
       .join("");
   }
   if (vc.dates) {
     allDates = vc.dates
-      .map((date, i) => `item${i + 1}.X-ABDATE:${date.label}${nl}item${i + 1}.X-ABLabel:${date.text}${nl}`)
+      .map(
+        (date, i) =>
+          `item${i + 1}.X-ABDATE:${date.label}${nl}item${i + 1}.X-ABLabel:${
+            date.text
+          }${nl}`
+      )
       .join("");
   }
   if (vc.socials) {
     allSocials = vc.socials
-      .map((social, i) => `X-SOCIALPROFILE;TYPE=${social.label}:${social.text}\r\n`)
+      .map(
+        (social, i) =>
+          `X-SOCIALPROFILE;TYPE=${social.label};x-user=${social.user}:${social.text}\r\n`
+      )
       .join("");
   }
 
@@ -94,10 +103,18 @@ exports.createVCard = function (vc) {
     isEmpty("FN;CHARSET=UTF-8:", vc.first_name, "") +
     isEmpty(" ", vc.middle_name, "") +
     isEmpty(" ", vc.last_name, nl) +
-    isEmpty("N;CHARSET=UTF-8:", vc.last_name, vc.first_name || vc.middle_name || vc.prefix || vc.suffix ? ";" : nl) +
-    isEmpty("", vc.first_name, vc.middle_name || vc.prefix || vc.suffix ? ";" : nl) +
+    isEmpty(
+      "N;CHARSET=UTF-8:",
+      vc.last_name,
+      vc.first_name || vc.middle_name || vc.prefix || vc.suffix ? ";" : nl
+    ) +
+    isEmpty(
+      "",
+      vc.first_name,
+      vc.middle_name || vc.prefix || vc.suffix ? ";" : nl
+    ) +
     isEmpty("", vc.middle_name, vc.prefix || vc.suffix ? ";" : nl) +
-    isEmpty("", vc.prefix, vc.suffix ? ";" : '') +
+    isEmpty("", vc.prefix, vc.suffix ? ";" : "") +
     isEmpty("", vc.suffix, nl) +
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
@@ -105,12 +122,12 @@ exports.createVCard = function (vc) {
     isEmpty("ORG;CHARSET=UTF-8:", vc.organization, nl) +
     isEmpty("ROLE;CHARSET=UTF-8:", vc.role, nl) +
     (allEmails ? allEmails : "") +
-    (allNumbers ? allNumbers : '') +
-    (allSocials ? allSocials : '') +
-    (allAddresses ? allAddresses : '') +
-    (allDates ? allDates : '') +
-    isEmpty('REV:', vc.last_updated, nl) +
-    isEmpty('SOURCE:', vc.source, nl) +
+    (allNumbers ? allNumbers : "") +
+    (allSocials ? allSocials : "") +
+    (allAddresses ? allAddresses : "") +
+    (allDates ? allDates : "") +
+    isEmpty("REV:", vc.last_updated, nl) +
+    isEmpty("SOURCE:", vc.source, nl) +
     vcEnd;
 
   return vCardString;

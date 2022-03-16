@@ -1,8 +1,8 @@
-const stuff = require("./index.js");
-const fs = require('fs');
-let mycard = stuff.createVCard({
+const vCardi = require("./index.js");
+
+let myVCard = vCardi.createVCard({
   last_updated: new Date().toISOString(),
-  source: 'https://link.onecard.zone/myCard.vcf',
+  source: "https://sikka.io",
   prefix: "Mr.",
   first_name: "Zakher",
   middle_name: "Mahmoud",
@@ -14,17 +14,20 @@ let mycard = stuff.createVCard({
   role: "Chief Executive Officer",
   title: "",
   notes: "here are the notes",
-  dates: [{
-    label: 'Birthday',
-    text: '19930118'
-  }, {
-    label: 'Birthday',
-    text: '19930118'
-  },
-  {
-    label: 'Anniversary',
-    text: '20220101'
-  }],
+  dates: [
+    {
+      label: "Birthday",
+      text: "19900101",
+    },
+    {
+      label: "Birthday",
+      text: "19900101",
+    },
+    {
+      label: "Anniversary",
+      text: "20220101",
+    },
+  ],
   numbers: [
     {
       label: "Work",
@@ -56,26 +59,25 @@ let mycard = stuff.createVCard({
   socials: [
     {
       label: "Twitter",
+      user: "zaaakher",
       text: "https://twitter.com/zaaakher",
     },
     {
       label: "Instagram",
+      user: "zaaakher",
       text: "https://instagram.com/zaaakher",
     },
     {
-      label: 'custom',
-      text: 'https://something.com'
-    }
+      label: "custom",
+      user: "zaaakher",
+      text: "https://something.com",
+    },
   ],
   addresses: [
     {
       label: "HomeLabel",
       text: "3489 Qsis Bin haa, Dammam ,Saudi Arabia",
-    }
+    },
   ],
 });
-console.log(mycard);
-
-// fs.writeFile('contactCard.vcf', mycard, function (err) {
-//   if (err) throw err;
-// });
+console.log(myVCard);
