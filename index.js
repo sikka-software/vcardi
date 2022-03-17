@@ -119,7 +119,8 @@ exports.createVCard = function (vc) {
     isEmpty("TITLE;CHARSET=UTF-8:", vc.title, nl) +
     isEmpty("NICKNAME;CHARSET=UTF-8:", vc.nickname, nl) +
     isEmpty("NOTE;CHARSET=UTF-8:", vc.notes, nl) +
-    isEmpty("ORG;CHARSET=UTF-8:", vc.organization, nl) +
+    isEmpty("ORG;CHARSET=UTF-8:", vc.organization, vc.department ? ";" : nl) +
+    isEmpty("", vc.department, nl) +
     isEmpty("ROLE;CHARSET=UTF-8:", vc.role, nl) +
     (allEmails ? allEmails : "") +
     (allNumbers ? allNumbers : "") +
