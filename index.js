@@ -1,7 +1,5 @@
 //TODO:
 //fix addres to separate with ;
-//add department
-//update FN to formatted name: i.e. Mr. Zakher Mahmoud Masri
 
 //https://en.wikipedia.org/wiki/VCard
 //Typical VCARD looks like the one below
