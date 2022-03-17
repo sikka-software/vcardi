@@ -1,6 +1,12 @@
 body {
-  background-color: aliceblue;
+  background-color: rgb(143, 143, 143);
+
   font-family: monospace;
+}
+
+#main-div {
+  display: flex;
+  flex-direction: row;
 }
 form {
   display: flex;
@@ -31,7 +37,14 @@ label input {
   border: none;
   width: -webkit-fill-available;
 }
-
+#download-vcard {
+  background-color: black;
+  color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  width: max-content;
+}
 #btn {
   padding: 10px;
   cursor: pointer;
@@ -49,4 +62,43 @@ label input {
   background-color: white;
   border-radius: 10px;
   width: 100%;
+}
+
+#title-desktop {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 10px;
+}
+#title-mobile {
+  display: none;
+}
+@media (max-width: 600px) {
+  #main-div {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  form {
+    width: 90%;
+    max-width: none;
+    margin: 0px;
+  }
+  #result {
+    max-width: none;
+    margin: 0px;
+    
+    margin-top: 10px;
+    width: 90%;
+  }
+  #title-desktop {
+    /* display: none; */
+    text-align: center;
+  }
+  #title-mobile {
+    display:block;
+    text-align: center;
+    /* background-color: red; */
+  }
 }

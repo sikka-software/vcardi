@@ -107,18 +107,15 @@ let fn = document.getElementById("first-name").value;
 
 const form = document.getElementById("maker");
 
+let downloadButton = document.createElement("div");
+downloadButton.innerHTML = "downlaod vcard";
+downloadButton.id = "download-vcard";
+let myCard;
 form.addEventListener("submit", (event) => {
-  // stop form submission
-
   event.preventDefault();
-  //   console.log(createVCard);
-  //   for (let i = 0; i < event.target.length - 1; i++) {
-  //     console.log("making vcard", event.target[i].value);
-  //   }
-  // let downloadButton = document.createElement("button");
-  // downloadButton.innerHTML = "downlaod vcard";
+
   let result = document.getElementById("result");
-  let mycard = createVCard({
+  myCard = createVCard({
     last_updated: new Date().toISOString(),
     prefix: form.elements["prefix"].value,
     first_name: form.elements["first-name"].value,
@@ -142,9 +139,18 @@ form.addEventListener("submit", (event) => {
     socials: [],
     addresses: [],
   });
-  // console.log(mycard);
-  result.innerHTML = mycard + "</br>";
-  // console.log("suffix is", form.elements["suffix"].value);
-  // result.appendChild(downloadButton);
-  // downloadButton.click();
+  result.innerHTML = myCard + "</br>";
+  result.appendChild(downloadButton);
 });
+
+downloadButton.onclick = () => {
+  var blob = new Blob([myCard], {
+    type: "text/x-vcard",
+  });
+
+  let cardURL = URL.createObjectURL(blob);
+  var downloadLink = document.createElement("a");
+  downloadLink.setAttribute("href", cardURL);
+  downloadLink.setAttribute("download", "vCardi.vcf");
+  downloadLink.click();
+};
